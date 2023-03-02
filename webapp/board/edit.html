@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Edit</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+	</head>
+	<body>
+		<div id="wrap">
+            <div class="header">
+                <div class="loginBar">
+                   <button id="loginBtn">로그인</button>	
+                   <button id="logoutBtn">로그아웃</button>
+                </div>
+                <a href="../main.html" id="blogTitle">loollool-log</a>
+                <input id="headerSearchBar" placeholder="검색"></input>
+            </div>
+            <div class="cont">
+                <div class="sideBar">
+                    <div id="profileBox">
+                        <img alt="프로필 사진" src="../img/profile.jpg">
+                    </div>
+                    <div class="categoryBox">
+                        <a href="../board/list.go" class="category">전체 리스트</a>
+                        <a href="../board/category2" class="category">카테고리1</a>
+                        <a href="../board/category3" class="category">카테고리2</a>
+                        <a href="../board/category4" class="category">카테고리 없음</a>
+                        <a href="../guestBook/list" class="category">방명록</a>
+                    </div>
+                </div>
+                <div class="postList">
+					<form method="post" action="./board/edit.go">
+						<input type="hidden" name="postNum" value="글 번호">					
+                    	<div class="subjectBox">
+	                    	<input type="text" id="subject" name="subject" value="글 제목"/></div>
+	                    	<select class="category" name="category">
+	                    		<option value="카테고리 명">카테고리 명</option>
+	                    	</select>
+	                    <div class="contentBox">
+                    		<input type="text" id="content" name="content" value="글 내용">
+							<button type="submit" class="submitBtn">작성</button>                    		
+							<button type="button" class="resetBtn">취소</button>                    		
+                    	</div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer">Copyrights are reserved by loollool.</div>
+        </div>
+	</body>
+</html>
