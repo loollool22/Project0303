@@ -22,7 +22,7 @@ public class BoardController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.setContentType("application/json; charset=utf-8");
 		PostDAO postDAO = new PostDAO();
 		PrintWriter out=resp.getWriter();
