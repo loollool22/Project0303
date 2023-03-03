@@ -23,8 +23,9 @@ public class PostController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 매개변수로 쓸 게시글 번호를 가져옴
+		resp.setContentType("application/json; charset=utf-8");
 		int postNum = Integer.parseInt(req.getParameter("postNum"));
-		System.out.println("one param:"+postNum);
+//		System.out.println("one param:"+postNum);
 		PostDAO postDAO = new PostDAO();
 		PostDTO postBean;
 		CommentDAO commentDAO = new CommentDAO();
@@ -41,20 +42,20 @@ public class PostController extends HttpServlet {
 					+ "\", \"post_content\":\"" + postBean.getPostContent() 
 					+ "\", \"post_date\":\"" + postBean.getPostDate() + "\"}");
 			out.println("]}");
-			
-			out.println("{\"comment\":[");
-			List<CommentDTO> commentList = commentDAO.getPostCommentList(postNum);
-			for(int i=0; i< commentList.size(); i++) {
-				commentBean = commentList.get(i);
-				if(i!=0)out.print(",");
-				out.println("{\"comment_num\":" + commentBean.getCommentNum()
-						+ ", \"post_num\":" + commentBean.getPostNum() 
-						+ ", \"comment_parent_num\":" + commentBean.getCommentParentNum() 
-						+ ", \"nickname\":\"" + commentBean.getNickname() 
-						+ "\", \"comment_content\":\"" + commentBean.getCommentContent()
-						+ "\", \"comment_date\":\"" + commentBean.getCommentDate() + "\"}");
-			}
-			out.println("]}");
+//			out.println(", ");
+//			out.println("{\"comment\":[");
+//			List<CommentDTO> commentList = commentDAO.getPostCommentList(postNum);
+//			for(int i=0; i< commentList.size(); i++) {
+//				commentBean = commentList.get(i);
+//				if(i!=0)out.print(",");
+//				out.println("{\"comment_num\":" + commentBean.getCommentNum()
+//						+ ", \"post_num\":" + commentBean.getPostNum() 
+//						+ ", \"comment_parent_num\":" + commentBean.getCommentParentNum() 
+//						+ ", \"nickname\":\"" + commentBean.getNickname() 
+//						+ "\", \"comment_content\":\"" + commentBean.getCommentContent()
+//						+ "\", \"comment_date\":\"" + commentBean.getCommentDate() + "\"}");
+//			}
+//			out.println("]}");
 			
 //			req.setAttribute("postDTO", postBean);
 //			req.setAttribute("commentList", commentList);

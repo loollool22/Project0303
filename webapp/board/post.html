@@ -5,6 +5,27 @@
 		<title>Post</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript">
+			var loadData=function(post){
+				$.ajax({
+					  url: 'http://localhost:8080/Project0303/board/post.go',
+					  type: 'get',
+					  contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+					  data: {post:post},
+					  dataType: "json",
+					  success: function(data) {
+							  var pageNum = data.post[0].post_num;
+							  $("#subject").val(data.post[0].subject);
+							  $("#category").val(data.post[0].category);
+							}
+						});
+					});
+			};
+		
+		$(function(){
+			loadData();
+		});
+		</script>
 	</head>
 	<body>
 		<div id="wrap">
@@ -22,7 +43,7 @@
                         <img alt="프로필 사진" src="../img/profile.jpg">
                     </div>
                     <div class="categoryBox">
-                        <a href="../board/list.go" class="category">전체 리스트</a>
+                        <a href="../board/list.html" class="category">전체 리스트</a>
                         <a href="../board/category2" class="category">카테고리1</a>
                         <a href="../board/category3" class="category">카테고리2</a>
                         <a href="../board/category4" class="category">카테고리 없음</a>
@@ -32,7 +53,7 @@
                 <div class="postList">
                     <div class="subjectBox">
                     	<input type="text" id="subject" readonly="readonly" value="글 제목"/>
-                    	<input type="hidden" name="category" value="카테고리">
+                    	<input type="hidden" id="category" name="category" value="카테고리">
                     </div>
                     <div class="contentBox">
                     	<input type="text" id="content" readonly="readonly" value="글 내용">
