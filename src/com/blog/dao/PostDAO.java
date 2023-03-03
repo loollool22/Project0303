@@ -20,8 +20,8 @@ public class PostDAO {
 	// DB 연결
 	public void getConnection() {
 		String url = "jdbc:mysql://localhost:3306/blog";
-		String user = System.getenv("MYSQL_USER");
-		String password = System.getenv("MYSQL_PW");
+		String user = "scott";
+		String password = "tiger";
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
